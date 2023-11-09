@@ -1,8 +1,25 @@
+"use client"
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 export default function Home() {
+
+useEffect(()=>{
+  async function initail(){
+    const response = await fetch("https://jsonplaceholder.typicode.com/comments")
+    const data = await response.json()
+    console.log("API WAS CALLED");
+  }
+
+  initail();
+}, [])
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h1 className='mt-12 text-5xl'>
+        ENV: {process.env.NEXT_PUBLIC_ENV}
+      </h1>
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;

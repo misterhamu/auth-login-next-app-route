@@ -1,11 +1,16 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useAuth } from "../context/authContext";
 
 
 type Props = {};
 
 export default function LoginPage({}: Props) {
-  const {login} = useAuth();
+  const {login, user} = useAuth();
+  const router = useRouter();
+  if(!!user){
+    router.replace("/");
+  }
   return (
     <div>
       <h2>Login Page</h2>

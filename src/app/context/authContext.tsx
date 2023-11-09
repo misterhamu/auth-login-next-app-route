@@ -2,15 +2,7 @@
 // ** React Imports
 import { createContext, useEffect, useState, ReactNode, useContext } from "react";
 
-// ** Next Import
 import { useRouter } from "next/navigation";
-
-// ** Axios
-
-// ** Config
-
-
-// ** Types
 
 import { Storage } from "../services/storage";
 
@@ -44,11 +36,9 @@ type Props = {
 const AuthProvider = ({ children }: Props) => {
   const storage = Storage.getInstance();
 
-  // ** States
   const [user, setUser] = useState<string | null>("");
   const [loading, setLoading] = useState<boolean>(false);
 
-  // ** Hooks
   const router = useRouter();
 
   useEffect(() => {

@@ -7,13 +7,10 @@ import { usePathname, useRouter } from "next/navigation";
 
 // ** Hooks Import
 
-
 import { Storage } from "../services/storage";
 
 import LoginPage from "../login/page";
 import { useAuth } from "../context/authContext";
-
-
 
 interface AuthGuardProps {
   children: ReactNode;
@@ -29,18 +26,8 @@ const AuthGuard = (props: AuthGuardProps) => {
 
   useEffect(
     () => {
-      // if (!router.isReady) {
-      //   return;
-      // }
-
       if (!storage.getSessionToken()) {
         if (pathname !== "/") {
-          // router.replace({
-          //   pathname: "/login",
-          //   query: { returnUrl: router.asPath },
-          // });
-          router.replace("/login");
-        } else {
           router.replace("/login");
         }
       }
